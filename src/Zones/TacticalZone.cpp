@@ -28,7 +28,6 @@ this program.  If not, see <http://www.gnu.org/licenses/>. */
 # include "defines.hpp"
 
 # include <SFML/System.hpp>
-# include <cmath>
 
 TacticalZone::TacticalZone(Vector2f const& location, float radius) :
     radius_(radius),

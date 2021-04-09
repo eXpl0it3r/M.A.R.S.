@@ -14,11 +14,8 @@ set(mars_HOMEPAGE "http://www.marsshooter.org")
 set(mars_EXENAME "mars")
 set(mars_PACKAGENAME "mars")
  
-# We require at least version 2.8.0
-cmake_minimum_required(VERSION 2.8.0)
-
-# Location where cmake first looks for modules.
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
+# We require at least version 3.7.2
+cmake_minimum_required(VERSION 3.7.2)
 
 #####################################################################
 # Configure and find libraries
@@ -29,24 +26,21 @@ find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 # find the sfml2 headers and library
-find_package(SFML REQUIRED audio graphics window system)
-include_directories(${SFML_INCLUDE_DIR})
+find_package(SFML REQUIRED audio graphics)
 
 # Foundation library needed for apple
 if(APPLE)
 	find_library(FOUNDATION_LIBRARY Foundation)
 endif(APPLE)
 
-# Xrandr library needed for unix
-# if(UNIX)
-#	find_library(XRANDR_LIBRARY Xrandr)
-# endif(UNIX)
-
 # tag library needed for reading tags of music files
-	find_library(TAG_LIBRARY tag)
+find_library(TAG_LIBRARY tag)
 
 # Fribidi library needed for bi-directional texts
-	find_library(FRIBIDI_LIBRARY fribidi)
+find_library(FRIBIDI_LIBRARY fribidi)
+
+# dirent library usually shipped with POSIX systems
+find_library(DIRENT_LIBRARY dirent)
 
 # set the executable output path
 if(APPLE)
@@ -56,15 +50,14 @@ else(APPLE)
 endif(APPLE)
 
 # include the 'include' directory
- include_directories(${MARS_SOURCE_DIR}/include)
+include_directories(${MARS_SOURCE_DIR}/include)
  
 #####################################################################
 # Create executable
 #####################################################################
 
 # compile source
-set(CMAKE_CXX_FLAGS "-s -O2")
- add_subdirectory(src) 
+add_subdirectory(src) 
  
 #####################################################################
 # Create package

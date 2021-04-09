@@ -20,7 +20,6 @@ this program.  If not, see <http://www.gnu.org/licenses/>. */
 # include "System/randomizer.hpp"
 
 # include <SFML/System.hpp>
-# include <cmath>
 
 Vector2f::Vector2f ():
     x_(0.0),

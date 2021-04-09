@@ -18,7 +18,7 @@ this program.  If not, see <http://www.gnu.org/licenses/>. */
 # ifndef AMMOFLUBBA_HPP_INCLUDED
 # define AMMOFLUBBA_HPP_INCLUDED
 
-# include "Particles/Particle.hpp"
+#include "Particles/Particle.hpp"
 
 class AmmoFlubba: public Particle<AmmoFlubba> {
     public:

@@ -24,8 +24,6 @@ this program.  If not, see <http://www.gnu.org/licenses/>. */
 # include "Teams/Team.hpp"
 # include "defines.hpp"
 
-# include <cmath>
-
 HomeZone::HomeZone(Vector2f const& location) :
         radius_(450.f),
         location_(location) {
